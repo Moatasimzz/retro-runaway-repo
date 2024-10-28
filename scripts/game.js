@@ -1,7 +1,7 @@
 const config = {
   type: Phaser.WEBGL,
   width: 800,
-  height: 600,
+  height: 576,
   parent: "phaser-example",
   pixelArt: true,
   backgroundColor: "#650c76",
@@ -20,18 +20,22 @@ const config = {
 
 const game = new Phaser.Game(config);
 
+var player,
+  coins,
+  cursors,
+  layer,
+  score = 0;
+const coinValue = 3; // The value in your CSV that represents a coin
+
 function preload() {
-  this.load.image("tiles", "./../assets/images/grey-tile.png");
-  this.load.image("car", "./../assets/images/red-car.png");
+  this.load.image("tiles", "./../assets/images/purple-tile.png");
+  this.load.image("car", "./../assets/images/green-car.png");
   this.load.tilemapCSV("map", "./../assets/tilemaps/grid.csv");
   this.load.spritesheet("coin", "./../assets/images/coin.png", {
     frameWidth: 32,
     frameHeight: 32,
   });
 }
-var player, coins, cursors, layer;
-const coinValue = 3; // The value in your CSV that represents a coin
-
 function create() {
   // create a tilemap where each tile is 32*32 px from map created from csv file
   const map = this.make.tilemap({
@@ -72,8 +76,6 @@ function create() {
     }
   }
 
-  //   this.physics.add.collider(player, layer);
-  //   this.physics.add.collider(coins, layer);
   this.physics.add.overlap(player, coins, collectCoin, null, this);
 }
 function update() {
@@ -118,4 +120,5 @@ function update() {
 function collectCoin(player, coin) {
   // coin physics is disabled and its game object is removed from display
   coin.disableBody(true, true);
+  score += 10;
 }
