@@ -29,6 +29,9 @@ function preload() {
     frameHeight: 32,
   });
 }
+var player, coins, cursors, layer;
+const coinValue = 3; // The value in your CSV that represents a coin
+
 function create() {
   // create a tilemap where each tile is 32*32 px from map created from csv file
   const map = this.make.tilemap({
@@ -41,15 +44,14 @@ function create() {
   const tileset = map.addTilesetImage("tiles", null, 32, 32, 1, 2);
 
   // create layer that will draw maze from added tileset
-  this.layer = map.createLayer(0, tileset, 0, 0);
+  layer = map.createLayer(0, tileset, 0, 0); // layer index, tileset, x, y
 
   //add player on tile (0,0) in its center
-  this.player = this.add.image(32 + 16, 32 + 16, "car");
-  this.cursors = this.input.keyboard.createCursorKeys();
+  player = this.physics.add.image(32 + 16, 32 + 16, "car");
+  cursors = this.input.keyboard.createCursorKeys();
 
   // add coins for user to collect, coins spin so add them as physics grp
-  const coinGroup = this.physics.add.group();
-  const coinValue = 3; // The value in your CSV that represents a coin
+  coins = this.physics.add.group();
 
   // add animation to coins to spin
   this.anims.create({
@@ -64,64 +66,56 @@ function create() {
     for (let x = 0; x < map.width; x++) {
       var tile = map.getTileAt(x, y);
       if (tile && tile.index === coinValue) {
-        var coin = coinGroup.create(x * 32 + 16, y * 32 + 16, "coin");
+        var coin = coins.create(x * 32 + 16, y * 32 + 16, "coin");
         coin.play("spin");
       }
     }
   }
+
+  //   this.physics.add.collider(player, layer);
+  //   this.physics.add.collider(coins, layer);
+  this.physics.add.overlap(player, coins, collectCoin, null, this);
 }
 function update() {
   // manage cursors to control player
-  if (this.input.keyboard.checkDown(this.cursors.left, 100)) {
+  if (this.input.keyboard.checkDown(cursors.left, 100)) {
     // get tile that user will move to now
-    const tile = this.layer.getTileAtWorldXY(
-      this.player.x - 32,
-      this.player.y,
-      true
-    );
+    const tile = layer.getTileAtWorldXY(player.x - 32, player.y, true);
     if (tile.index === 2) {
       //  means a block
     } else {
       // move one step left with rotated image
-      this.player.x -= 32;
-      this.player.angle = 180;
+      player.x -= 32;
+      player.angle = 180;
     }
-  } else if (this.input.keyboard.checkDown(this.cursors.right, 100)) {
-    const tile = this.layer.getTileAtWorldXY(
-      this.player.x + 32,
-      this.player.y,
-      true
-    );
+  } else if (this.input.keyboard.checkDown(cursors.right, 100)) {
+    const tile = layer.getTileAtWorldXY(player.x + 32, player.y, true);
     if (tile.index === 2) {
       // means a block
     } else {
       // move one step right with rotated image
-      this.player.x += 32;
-      this.player.angle = 0;
+      player.x += 32;
+      player.angle = 0;
     }
-  } else if (this.input.keyboard.checkDown(this.cursors.up, 100)) {
-    const tile = this.layer.getTileAtWorldXY(
-      this.player.x,
-      this.player.y - 32,
-      true
-    );
+  } else if (this.input.keyboard.checkDown(cursors.up, 100)) {
+    const tile = layer.getTileAtWorldXY(player.x, player.y - 32, true);
     if (tile.index === 2) {
       // means a block
     } else {
-      this.player.y -= 32;
-      this.player.angle = -90;
+      player.y -= 32;
+      player.angle = -90;
     }
-  } else if (this.input.keyboard.checkDown(this.cursors.down, 100)) {
-    const tile = this.layer.getTileAtWorldXY(
-      this.player.x,
-      this.player.y + 32,
-      true
-    );
+  } else if (this.input.keyboard.checkDown(cursors.down, 100)) {
+    const tile = layer.getTileAtWorldXY(player.x, player.y + 32, true);
     if (tile.index === 2) {
       // means a block
     } else {
-      this.player.y += 32;
-      this.player.angle = 90;
+      player.y += 32;
+      player.angle = 90;
     }
   }
+}
+function collectCoin(player, coin) {
+  // coin physics is disabled and its game object is removed from display
+  coin.disableBody(true, true);
 }
