@@ -2,6 +2,8 @@ canvas {
   display: block;
   margin: auto;
 }
-.left {
-  width: 10%;
+
+.score {
+  width: 200px;
+  padding: 20px;
 }

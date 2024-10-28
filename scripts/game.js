@@ -121,4 +121,5 @@ function collectCoin(player, coin) {
   // coin physics is disabled and its game object is removed from display
   coin.disableBody(true, true);
   score += 10;
+  scoreText.innerHTML = "Score: " + score;
 }
