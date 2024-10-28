@@ -42,5 +42,63 @@ function create() {
 
   // create layer that will draw maze from added tileset
   this.layer = map.createLayer(0, tileset, 0, 0);
+
+  //add player on tile (0,0) in its center
+  this.player = this.add.image(32 + 16, 32 + 16, "car");
+  this.cursors = this.input.keyboard.createCursorKeys();
 }
-function update() {}
+function update() {
+  // manage cursors to control player
+  if (this.input.keyboard.checkDown(this.cursors.left, 100)) {
+    // get tile that user will move to now
+    const tile = this.layer.getTileAtWorldXY(
+      this.player.x - 32,
+      this.player.y,
+      true
+    );
+    if (tile.index === 2) {
+      //  means a block
+    } else {
+      // move one step left with rotated image
+      this.player.x -= 32;
+      this.player.angle = 180;
+    }
+  } else if (this.input.keyboard.checkDown(this.cursors.right, 100)) {
+    const tile = this.layer.getTileAtWorldXY(
+      this.player.x + 32,
+      this.player.y,
+      true
+    );
+    if (tile.index === 2) {
+      // means a block
+    } else {
+      // move one step right with rotated image
+      this.player.x += 32;
+      this.player.angle = 0;
+    }
+  } else if (this.input.keyboard.checkDown(this.cursors.up, 100)) {
+    const tile = this.layer.getTileAtWorldXY(
+      this.player.x,
+      this.player.y - 32,
+      true
+    );
+    if (tile.index === 2) {
+      // means a block
+    } else {
+      this.player.y -= 32;
+      this.player.angle = -90;
+    }
+  } else if (this.input.keyboard.checkDown(this.cursors.down, 100)) {
+    const tile = this.layer.getTileAtWorldXY(
+      this.player.x,
+      this.player.y + 32,
+      true
+    );
+    if (tile.index === 2) {
+      // means a block
+    } else {
+      this.player.y += 32;
+      this.player.angle = 90;
+    }
+  }
+}
