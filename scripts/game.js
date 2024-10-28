@@ -4,7 +4,7 @@ const config = {
   height: 600,
   parent: "phaser-example",
   pixelArt: true,
-  backgroundColor: "#4c0d8b",
+  backgroundColor: "#650c76",
   physics: {
     default: "arcade",
     arcade: {
@@ -46,6 +46,29 @@ function create() {
   //add player on tile (0,0) in its center
   this.player = this.add.image(32 + 16, 32 + 16, "car");
   this.cursors = this.input.keyboard.createCursorKeys();
+
+  // add coins for user to collect, coins spin so add them as physics grp
+  const coinGroup = this.physics.add.group();
+  const coinValue = 3; // The value in your CSV that represents a coin
+
+  // add animation to coins to spin
+  this.anims.create({
+    key: "spin",
+    frames: this.anims.generateFrameNumbers("coin", { start: 0, end: 5 }),
+    frameRate: 16,
+    repeat: -1,
+  });
+
+  // place coin in tilemap based on their id = 3
+  for (let y = 0; y < map.height; y++) {
+    for (let x = 0; x < map.width; x++) {
+      var tile = map.getTileAt(x, y);
+      if (tile && tile.index === coinValue) {
+        var coin = coinGroup.create(x * 32 + 16, y * 32 + 16, "coin");
+        coin.play("spin");
+      }
+    }
+  }
 }
 function update() {
   // manage cursors to control player
