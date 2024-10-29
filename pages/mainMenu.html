@@ -1,17 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="./../styles/base/mainMenu.css">
-    <link rel="stylesheet" href="./../styles/base/base.css">
-    <link rel="stylesheet" href="./../styles/base/utilities.css">
-    <link rel="stylesheet" href="./../styles/base/fonts.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="stylesheet" href="./../styles/base/mainMenu.css" />
+    <link rel="stylesheet" href="./../styles/base/base.css" />
+    <link rel="stylesheet" href="./../styles/base/utilities.css" />
+    <link rel="stylesheet" href="./../styles/base/fonts.css" />
+    <link rel="stylesheet" href="./../styles/base/colors.css" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MAIN MENU</title>
-</head>
-<body>
-    <div class="full-viewport overflow-hidden img-container">
-        <img src="./../assets/images/mainMenuBG.jpg" alt="Main Menu Retro Background">
+  </head>
+  <body class="full-size">
+    <div class="full-viewport overflow-hidden relative-position padding-mM">
+      <img
+        src="./../assets/images/mainMenuBG.jpg"
+        alt="Main Menu Retro Background"
+        class="full-size"
+      />
+
+      <div
+        class="flex column align-center white-color center items full-size space-evenly"
+      >
+        <p class="title-size">RETRO RUNAWAY</p>
+        <!--<p class="absolute-position shadow-titles primary-color">RETRO RUNAWAY</p>-->
+
+        <p class="sub-title-size">ENTER USERNAME</p>
+        <!--<p class="absolute-position sub-shadow-titles1 primary-color">ENTER USERNAME</p>-->
+
+        <input
+          type="text"
+          placeholder="Enter Username"
+          class="borders opacity primary-color"
+        />
+
+        <p class="sub-title-size">CHOOSE YOUR CAR</p>
+        <!--<p class="shadow-sub-titles sub-titles-size">CHOOSE YOUR CAR</p>-->
+
+        <div class="flex car-imgs-container">
+          <button class="borders">
+            <img src="./../assets/images/pink-car.png" alt="Pink Car" />
+          </button>
+          <button class="borders">
+            <img src="./../assets/images/green-car.png" alt="Pink Car" />
+          </button>
+          <button class="borders">
+            <img src="./../assets/images/red-car.png" alt="Pink Car" />
+          </button>
+        </div>
+
+        <button class="play-bttn borders opacity primary-color">PLAY</button>
+      </div>
     </div>
-</body>
+  </body>
 </html>
