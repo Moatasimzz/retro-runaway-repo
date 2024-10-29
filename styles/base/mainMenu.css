@@ -29,9 +29,15 @@ input {
   transform: rotate(270deg);
 }
 
-.play-bttn {
-  margin-top: 25px;
+.play-container {
+  gap: 10px;
+}
+.play-container > button {
   font-size: 25px;
+}
+
+.play-container > button > img {
+  margin-top: 5px;
 }
 
 /*.shadow-titles {
