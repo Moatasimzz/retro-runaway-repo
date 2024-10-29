@@ -25,13 +25,11 @@ input {
   gap: 25px;
 }
 
-.car-imgs-container > button {
-  transform: rotate(270deg);
-}
-
 .play-container {
+  margin-top: 45px;
   gap: 10px;
 }
+
 .play-container > button {
   font-size: 25px;
 }
