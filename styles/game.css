@@ -7,3 +7,9 @@ canvas {
   width: 200px;
   padding: 20px;
 }
+
+.level-btn {
+  width: 200px;
+  padding: 20px;
+  height: 200px;
+}

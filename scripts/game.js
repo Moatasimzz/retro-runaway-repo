@@ -18,19 +18,37 @@ const config = {
   },
 };
 
-const game = new Phaser.Game(config);
+var game;
 
+var grid1 = "./../assets/tilemaps/grid.csv";
+var grid2 = "./../assets/tilemaps/grid02.csv";
+var grid = "";
 var player,
   coins,
   cursors,
   layer,
   score = 0;
 const coinValue = 3; // The value in your CSV that represents a coin
+levelOne.addEventListener("click", function () {
+  if (game) {
+    game.destroy(true, false);
+  }
+  grid = grid1;
+  game = new Phaser.Game(config);
+});
+levelTwo.addEventListener("click", function () {
+  if (game) {
+    game.destroy(true, false);
+  }
+
+  grid = grid2;
+  game = new Phaser.Game(config);
+});
 
 function preload() {
   this.load.image("tiles", "./../assets/images/purple-tile.png");
-  this.load.image("car", "./../assets/images/yellow-car.png");
-  this.load.tilemapCSV("map", "./../assets/tilemaps/grid02.csv");
+  this.load.image("car", "./../assets/images/green-car.png");
+  this.load.tilemapCSV("map", grid);
   this.load.spritesheet("coin", "./../assets/images/coin.png", {
     frameWidth: 32,
     frameHeight: 32,
