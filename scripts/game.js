@@ -27,15 +27,16 @@ var player,
   coins,
   cursors,
   layer,
-  score = 0;
-const coinValue = 3; // The value in your CSV that represents a coin
-levelOne.addEventListener("click", function () {
-  if (game) {
-    game.destroy(true, false);
-  }
-  grid = grid1;
-  game = new Phaser.Game(config);
-});
+  keys,
+  door,
+  have_key = false,
+  score = 0,
+  coin_value = 3,
+  key_value = 4,
+  end_value = 5; // The value in your CSV that represents a coin
+
+grid = grid1;
+game = new Phaser.Game(config);
 levelTwo.addEventListener("click", function () {
   if (game) {
     game.destroy(true, false);
@@ -48,7 +49,9 @@ levelTwo.addEventListener("click", function () {
 function preload() {
   this.load.image("tiles", "./../assets/images/purple-tile.png");
   this.load.image("car", "./../assets/images/green-car.png");
+  this.load.image("door", "./../assets/images/door.png");
   this.load.tilemapCSV("map", grid);
+  this.load.image("key", "./../assets/images/key.png");
   this.load.spritesheet("coin", "./../assets/images/coin.png", {
     frameWidth: 32,
     frameHeight: 32,
@@ -69,7 +72,7 @@ function create() {
   layer = map.createLayer(0, tileset, 0, 0); // layer index, tileset, x, y
 
   //add player on tile (0,0) in its center
-  player = this.physics.add.image(32 + 16, 32 + 16, "car");
+
   cursors = this.input.keyboard.createCursorKeys();
 
   // add coins for user to collect, coins spin so add them as physics grp
@@ -83,25 +86,35 @@ function create() {
     repeat: -1,
   });
 
-  // place coin in tilemap based on their id = 3
+  // place coins and key in tilemap based on their ids
   for (let y = 0; y < map.height; y++) {
     for (let x = 0; x < map.width; x++) {
       var tile = map.getTileAt(x, y);
-      if (tile && tile.index === coinValue) {
+      if (tile && tile.index === coin_value) {
         var coin = coins.create(x * 32 + 16, y * 32 + 16, "coin");
         coin.play("spin");
       }
+      if (tile && tile.index === key_value) {
+        key = this.physics.add.image(x * 32 + 16, y * 32 + 16, "key");
+      }
+      if (tile && tile.index === end_value) {
+        door = this.physics.add.image(x * 32 + 16, y * 32 + 16, "door");
+      }
     }
   }
+  player = this.physics.add.image(32 + 16, 32 + 16, "car");
+  player.setCollideWorldBounds(true);
 
-  this.physics.add.overlap(player, coins, collectCoin, null, this);
+  this.physics.add.overlap(player, coins, collectCoin);
+  this.physics.add.overlap(player, key, collectKey);
+  this.physics.add.collider(player, door, win);
 }
 function update() {
   // manage cursors to control player
   if (this.input.keyboard.checkDown(cursors.left, 100)) {
     // get tile that user will move to now
     const tile = layer.getTileAtWorldXY(player.x - 32, player.y, true);
-    if (tile.index === 2) {
+    if (tile && tile.index === 2) {
       //  means a block
     } else {
       // move one step left with rotated image
@@ -110,7 +123,7 @@ function update() {
     }
   } else if (this.input.keyboard.checkDown(cursors.right, 100)) {
     const tile = layer.getTileAtWorldXY(player.x + 32, player.y, true);
-    if (tile.index === 2) {
+    if (tile && tile.index === 2) {
       // means a block
     } else {
       // move one step right with rotated image
@@ -119,7 +132,7 @@ function update() {
     }
   } else if (this.input.keyboard.checkDown(cursors.up, 100)) {
     const tile = layer.getTileAtWorldXY(player.x, player.y - 32, true);
-    if (tile.index === 2) {
+    if (tile && tile.index === 2) {
       // means a block
     } else {
       player.y -= 32;
@@ -127,7 +140,7 @@ function update() {
     }
   } else if (this.input.keyboard.checkDown(cursors.down, 100)) {
     const tile = layer.getTileAtWorldXY(player.x, player.y + 32, true);
-    if (tile.index === 2) {
+    if (tile && tile.index === 2) {
       // means a block
     } else {
       player.y += 32;
@@ -140,4 +153,9 @@ function collectCoin(player, coin) {
   coin.disableBody(true, true);
   score += 10;
   scoreText.innerHTML = "Score: " + score;
+}
+
+function collectKey(player, key) {
+  key.disableBody(true, true);
+  have_key = true;
 }

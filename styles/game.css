@@ -3,13 +3,35 @@ canvas {
   margin: auto;
 }
 
-.score {
+.side-section {
+  width: 400px;
+  gap: 50px;
+}
+.game-settings {
+  gap: 20px;
+}
+.game-settings > div {
+  text-align: center;
   width: 200px;
   padding: 20px;
 }
 
-.level-btn {
-  width: 200px;
+.game-settings > button,
+.win-card > button,
+.lose-card > button {
+  width: 100px;
   padding: 20px;
-  height: 200px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.win-card,
+.lose-card {
+  text-align: center;
+  width: 200px;
+  color: white;
+  background-color: rgb(146, 55, 146);
+  padding: 20px;
+  border-radius: 5px;
+  display: none;
 }

@@ -10,9 +10,23 @@
     <title>Retro Runaway</title>
   </head>
   <body class="flex space-between">
-    <div class="score"><h2 id="score">Score: 0</h2></div>
-    <button id="level1" class="level-btn">Level 1</button>
-    <button id="level2" class="level-btn">Level 2</button>
+    <div class="flex column align-center side-section">
+      <div class="flex column align-center game-settings">
+        <div class="score"><h2 id="score">Score: 0</h2></div>
+        <button id="level1">Level 1</button>
+      </div>
+
+      <div class="win-card flex column align-center" id="win">
+        <h2>Hooray!! You won!</h2>
+        <h2>Advance to:</h2>
+      </div>
+
+      <div class="lose-card">
+        <h2>Game Over</h2>
+        <button id="level2">Level 2</button>
+      </div>
+    </div>
+
     <script src="./../scripts/dom.js"></script>
     <script src="./../scripts/game.js"></script>
   </body>
