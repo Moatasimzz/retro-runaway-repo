@@ -23,6 +23,7 @@ var carColorToImg = {
   green: "./../assets/images/green-car.png",
   yellow: "./../assets/images/yellow-car.png",
 };
+
 //change grids according to level
 var grid_array = [
   null,
@@ -30,6 +31,7 @@ var grid_array = [
   "./../assets/tilemaps/grid02.csv",
   "./../assets/tilemaps/grid02.csv",
 ];
+
 var urlParams = new URLSearchParams(window.location.search);
 var carColor = urlParams.get("color");
 var grid,
@@ -50,6 +52,9 @@ var grid,
 grid = grid_array[level];
 game = new Phaser.Game(config);
 
+var time = [0, 3, 100, 85];
+startTimer();
+
 function preload() {
   this.load.image("tiles", "./../assets/images/purple-tile.png");
   this.load.image("car", carColorToImg[carColor]);
@@ -63,6 +68,8 @@ function preload() {
 }
 
 function create() {
+  gameIsRunning = true;
+
   // create a tilemap where each tile is 32*32 px from map created from csv file
   const map = this.make.tilemap({
     key: "map",
@@ -218,7 +225,7 @@ function manageTryAgainButtonInLose() {
     // Try again settings
     loseDiv.style.display = "none";
     // LOSE reset settings of game
-    loadLevel(level);
+    //resetLevel();
   });
   game.pause();
   loseDiv.style.display = "block";
@@ -232,7 +239,40 @@ function finishAllLevels() {
   game.pause();
   endDiv.style.display = "block";
 }
+
+function resetLevel() {
+  console.log(game);
+  console.log(time);
+  time = [0, 5, 120, 90];
+  console.log(time);
+  startTimer();
+  loadLevel(level);
+}
+
+function startTimer() {
+  setInterval(updateTime, 1000);
+  //console.log(level);
+}
+
 // add timer
+function updateTime() {
+  if (time[level] > 0) {
+    time[level] -= 1;
+    timeText.innerText = `Time: ${formatTime(time[level])}`;
+  } else {
+    time[level] = 0;
+    manageTryAgainButtonInLose();
+    //console.log(level);
+  }
+}
+
+function formatTime(num) {
+  var min = Math.floor(num / 60);
+  var sec = Math.floor(num % 60);
+
+  return `${min}:${String(sec).padStart(2, "0")}`;
+}
+
 // add a game over and manage reset settings in lose (lose-card in html)
 // add a message when all levels are passed
 // add grid of level 3
