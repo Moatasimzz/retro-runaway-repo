@@ -18,6 +18,8 @@ canvas {
   margin-bottom: 20px;
 }
 .side-section {
+  border: 5px solid #9233a5;
+  border-radius: 10px;
   gap: 20px;
   width: 300px;
   margin: 20px 30px;
@@ -34,23 +36,27 @@ canvas {
   padding: 20px;
 }
 
-.game-settings > button,
 .win-card > button,
 .lose-card > button {
-  width: 100px;
-  padding: 20px;
-  height: 50px;
-  border-radius: 5px;
+  font-size: 25px;
 }
 
 .win-card,
-.lose-card {
-  gap: 20pxpx;
+.lose-card,
+.end-card {
+  gap: 50px;
+  line-height: 50px;
   text-align: center;
-  width: 100%;
+  width: 50%;
   border: 2px solid #f3f3f3;
-  font-stretch: expanded;
+  font-size: larger;
   padding: 20px;
   border-radius: 5px;
   display: none;
+}
+
+button:hover {
+  background-color: #372d65;
+  border-color: white;
+  color: white;
 }

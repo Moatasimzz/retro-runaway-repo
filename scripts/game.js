@@ -183,6 +183,7 @@ function win(player, door) {
     } else {
       //TODO
       // finished game
+      finishAllLevels();
     }
   }
 }
@@ -222,6 +223,15 @@ function manageTryAgainButtonInLose() {
   loseDiv.style.display = "block";
 }
 
+function finishAllLevels() {
+  endBtn.addEventListener("click", function () {
+    // navigate to another page when levels are finished
+    window.location.href = "./../pages/mainMenu.html";
+  });
+  game.pause();
+  endDiv.style.display = "block";
+}
 // add timer
-// add a game over and amange reset settings in lose (lose-card in html)
+// add a game over and manage reset settings in lose (lose-card in html)
 // add a message when all levels are passed
+// add grid of level 3

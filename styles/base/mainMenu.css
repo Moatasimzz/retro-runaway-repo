@@ -4,7 +4,9 @@ input {
 }
 
 button:hover {
-  background-color: black;
+  background-color: #372d65;
+  border-color: white;
+  color: white;
 }
 
 .items {
@@ -21,6 +23,7 @@ button:hover {
 }
 
 .sub-title-size {
+  margin-bottom: 20px;
   font-size: 45px;
 }
 
@@ -30,7 +33,7 @@ button:hover {
 }
 
 .play-container {
-  margin-top: 45px;
+  margin: 30px 0;
   gap: 10px;
 }
 
