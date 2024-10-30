@@ -118,6 +118,7 @@ function create() {
   //check collision between player and door
   this.physics.add.collider(player, door, win);
 }
+
 function update() {
   // manage cursors to control player
   if (this.input.keyboard.checkDown(cursors.left, 100)) {
