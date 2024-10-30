@@ -23,6 +23,8 @@ canvas {
   padding: 20px;
   height: 50px;
   border-radius: 5px;
+
+  color: rgb(146, 55, 146);
 }
 
 .win-card,

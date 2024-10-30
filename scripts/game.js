@@ -18,12 +18,15 @@ const config = {
   },
 };
 
-var game;
+var grid_array = [
+  null,
+  "./../assets/tilemaps/grid.csv",
+  "./../assets/tilemaps/grid02.csv",
+];
 
-var grid1 = "./../assets/tilemaps/grid.csv";
-var grid2 = "./../assets/tilemaps/grid02.csv";
-var grid = "";
-var player,
+var grid,
+  game,
+  player,
   coins,
   cursors,
   layer,
@@ -35,16 +38,12 @@ var player,
   key_value = 4,
   end_value = 5; // The value in your CSV that represents a coin
 
-grid = grid1;
+grid = grid_array[level];
 game = new Phaser.Game(config);
-levelTwo.addEventListener("click", function () {
-  if (game) {
-    game.destroy(true, false);
-  }
-
-  grid = grid2;
-  game = new Phaser.Game(config);
-});
+// levelOne.addEventListener("click",function(){
+//   grid = grid_array[level]
+//   game = new Phaser.Game(config);
+// })
 
 function preload() {
   this.load.image("tiles", "./../assets/images/purple-tile.png");
@@ -158,4 +157,35 @@ function collectCoin(player, coin) {
 function collectKey(player, key) {
   key.disableBody(true, true);
   have_key = true;
+}
+
+function win(player, door) {
+  if (have_key) {
+    game.pause();
+    level += 1;
+    console.log(level);
+    createLevelButton();
+  }
+}
+
+function loadLevel(level) {
+  if (game) {
+    game.destroy(true, false);
+  }
+  grid = grid_array[level];
+  game = new Phaser.Game(config);
+}
+
+function createLevelButton() {
+  var winBtn = document.createElement("button");
+  winBtn.setAttribute("id", `${levelsArray[level]}`);
+  winBtn.innerHTML = `Level ${level}`;
+  winDiv.appendChild(winBtn);
+  winBtn.addEventListener("click", function () {
+    loadLevel(level);
+    winDiv.style.display = "none";
+    console.log(level);
+    levelHeader.innerHTML = `Level ${level}`;
+  });
+  winDiv.style.display = "block";
 }
