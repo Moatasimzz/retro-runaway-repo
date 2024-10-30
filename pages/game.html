@@ -5,25 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./../styles/base/base.css" />
     <link rel="stylesheet" href="./../styles/base/utilities.css" />
+    <link rel="stylesheet" href="./../styles/base/colors.css" />
+    <link rel="stylesheet" href="./../styles/base/fonts.css" />
     <link rel="stylesheet" href="./../styles/game.css" />
     <script src="./../libs/phaser.js"></script>
     <title>Retro Runaway</title>
   </head>
-  <body class="flex space-between">
-    <div class="flex column align-center side-section">
-      <div class="flex column align-center game-settings">
+  <body class="flex row secondary-color-bg full-viewport">
+    <div
+      class="flex column align-center space-around side-section primary-color-bg full-width"
+    >
+      <div class="logo">
+        <img src="./../assets/images/retro-runaway-logo.png" alt="" />
+      </div>
+      <div
+        class="flex column align-center justify-center game-settings grey-color"
+      >
         <div class="score"><h2 id="score">Score: 0</h2></div>
         <h2 id="level">Level 1</h2>
-        <!-- <button id="level1">Level 1</button> -->
       </div>
 
-      <div class="win-card flex column align-center" id="win">
+      <div
+        class="center win-card flex column align-center secondary-color-bg grey-color justify-center"
+        id="win"
+      >
         <h2>Hooray!! You won!</h2>
         <h2>Advance to:</h2>
         <button id="winBtn"></button>
       </div>
 
-      <div class="lose-card" id="lose">
+      <div
+        class="center lose-card flex column align-center secondary-color-bg grey-color justify-center"
+        id="lose"
+      >
         <h2>Game Over</h2>
         <button id="loseBtn">Try Again</button>
       </div>

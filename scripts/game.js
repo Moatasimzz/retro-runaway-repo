@@ -171,7 +171,7 @@ function win(player, door) {
     game.pause(); // pause all game so user cannot continue playing
     level += 1;
     have_key = false; // reset key
-
+    console.log(level);
     if (level <= 3) {
       createNextLevelButtonInWin(); // there is still a next level
     } else {

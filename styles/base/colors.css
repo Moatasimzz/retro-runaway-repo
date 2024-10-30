@@ -9,3 +9,20 @@
 .primary-color-bg {
   background-color: #650c76;
 }
+
+.secondary-color-bg {
+  background-color: #0c013d;
+}
+.secondary-color {
+  color: #0c013d;
+}
+.grey-color {
+  color: #f3f3f3;
+}
+.grey-color-bg {
+  color: #f3f3f3;
+}
+
+.black {
+  color: black;
+}

@@ -1,18 +1,38 @@
+body {
+  font-family: "Rubik", sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  gap: 20px;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 canvas {
   display: block;
   margin: auto;
 }
 
+.logo {
+  width: 200px;
+  margin-bottom: 20px;
+}
 .side-section {
-  width: 400px;
-  gap: 50px;
+  gap: 20px;
+  width: 300px;
+  margin: 20px 30px;
 }
 .game-settings {
-  gap: 20px;
+  gap: 50px;
+}
+.game-settings h2 {
+  border: 20px;
+  text-align: center;
 }
 .game-settings > div {
   text-align: center;
-  width: 200px;
   padding: 20px;
 }
 
@@ -23,16 +43,15 @@ canvas {
   padding: 20px;
   height: 50px;
   border-radius: 5px;
-
-  color: rgb(146, 55, 146);
 }
 
 .win-card,
 .lose-card {
+  gap: 20pxpx;
   text-align: center;
-  width: 200px;
-  color: white;
-  background-color: rgb(146, 55, 146);
+  width: 100%;
+  border: 2px solid #f3f3f3;
+  font-stretch: expanded;
   padding: 20px;
   border-radius: 5px;
   display: none;
