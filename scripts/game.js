@@ -52,7 +52,8 @@ var grid,
 grid = grid_array[level];
 game = new Phaser.Game(config);
 
-var time = [0, 3, 100, 85];
+var gameIsRunning;
+var time = [0, 5, 100, 85];
 startTimer();
 
 function preload() {
@@ -225,7 +226,7 @@ function manageTryAgainButtonInLose() {
     // Try again settings
     loseDiv.style.display = "none";
     // LOSE reset settings of game
-    //resetLevel();
+    resetLevel();
   });
   game.pause();
   loseDiv.style.display = "block";
@@ -241,11 +242,10 @@ function finishAllLevels() {
 }
 
 function resetLevel() {
-  console.log(game);
   console.log(time);
   time = [0, 5, 120, 90];
   console.log(time);
-  startTimer();
+
   loadLevel(level);
 }
 
