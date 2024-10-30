@@ -22,6 +22,7 @@ var grid_array = [
   null,
   "./../assets/tilemaps/grid.csv",
   "./../assets/tilemaps/grid02.csv",
+  "./../assets/tilemaps/grid02.csv",
 ];
 
 var grid,
@@ -32,8 +33,8 @@ var grid,
   layer,
   keys,
   door,
-  have_key = false,
-  score = 0,
+  have_key = false, // need to be changed with levels
+  score = 0, // can be changed with levels
   coin_value = 3,
   key_value = 4,
   end_value = 5; // The value in your CSV that represents a coin
@@ -163,8 +164,12 @@ function win(player, door) {
   if (have_key) {
     game.pause();
     level += 1;
-    console.log(level);
-    createLevelButton();
+    have_key = false;
+    if (level <= 3) {
+      createLevelButton();
+    } else {
+      // finished game
+    }
   }
 }
 
@@ -177,14 +182,12 @@ function loadLevel(level) {
 }
 
 function createLevelButton() {
-  var winBtn = document.createElement("button");
-  winBtn.setAttribute("id", `${levelsArray[level]}`);
+  // winBtn.setAttribute("id", `${levelsArray[level]}`);
   winBtn.innerHTML = `Level ${level}`;
   winDiv.appendChild(winBtn);
   winBtn.addEventListener("click", function () {
     loadLevel(level);
     winDiv.style.display = "none";
-    console.log(level);
     levelHeader.innerHTML = `Level ${level}`;
   });
   winDiv.style.display = "block";
