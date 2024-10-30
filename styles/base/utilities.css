@@ -25,6 +25,9 @@
 .space-evenly {
   justify-content: space-evenly;
 }
+.text-align {
+  text-align: center;
+}
 
 .full-viewport {
   width: 100vw;
@@ -67,4 +70,10 @@
 
 .opacity {
   opacity: 75%;
+}
+
+.vertical-line {
+  border-left: 2px solid #650c76;
+  height: 350px;
+  margin: 0px 20px 0px 20px;
 }

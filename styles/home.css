@@ -8,3 +8,38 @@
   gap: 55px;
   font-size: 28px;
 }
+
+.hero-section {
+  height: 85vh;
+}
+
+.hero-section > img {
+  opacity: 50%;
+}
+
+.hero-section > div > p {
+  font-size: 70px;
+}
+
+.hero-section > div > button {
+  font-size: 35px;
+}
+
+.hero-item {
+  margin-top: 40px;
+  gap: 25px;
+}
+
+.hero-item > button:hover {
+  background-color: #a00fbd;
+  color: black;
+}
+
+.game-play-description,
+.game-play-title {
+  padding: 85px 0px 85px 50px;
+}
+
+.game-play-title p {
+  font-size: 80px;
+}
