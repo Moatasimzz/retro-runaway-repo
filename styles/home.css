@@ -30,6 +30,11 @@
   gap: 25px;
 }
 
+.hero-item > button:hover {
+  background-color: #a00fbd;
+  color: black;
+}
+
 .game-play-description,
 .game-play-title {
   padding: 85px 0px 85px 50px;
