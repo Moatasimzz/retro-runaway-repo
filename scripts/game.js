@@ -18,6 +18,7 @@ const config = {
   },
 };
 
+//change grids according to level
 var grid_array = [
   null,
   "./../assets/tilemaps/grid.csv",
@@ -35,28 +36,26 @@ var grid,
   door,
   have_key = false, // need to be changed with levels
   score = 0, // can be changed with levels
-  coin_value = 3,
-  key_value = 4,
-  end_value = 5; // The value in your CSV that represents a coin
+  coin_value = 3, // The value in your CSV that represents a coin
+  key_value = 4, // The value in your CSV that represents a key
+  end_value = 5; // The value in your CSV that represents a door
 
+//Start at level 1
 grid = grid_array[level];
 game = new Phaser.Game(config);
-// levelOne.addEventListener("click",function(){
-//   grid = grid_array[level]
-//   game = new Phaser.Game(config);
-// })
 
 function preload() {
   this.load.image("tiles", "./../assets/images/purple-tile.png");
   this.load.image("car", "./../assets/images/green-car.png");
   this.load.image("door", "./../assets/images/door.png");
-  this.load.tilemapCSV("map", grid);
   this.load.image("key", "./../assets/images/key.png");
+  this.load.tilemapCSV("map", grid);
   this.load.spritesheet("coin", "./../assets/images/coin.png", {
     frameWidth: 32,
     frameHeight: 32,
   });
 }
+
 function create() {
   // create a tilemap where each tile is 32*32 px from map created from csv file
   const map = this.make.tilemap({
@@ -70,8 +69,6 @@ function create() {
 
   // create layer that will draw maze from added tileset
   layer = map.createLayer(0, tileset, 0, 0); // layer index, tileset, x, y
-
-  //add player on tile (0,0) in its center
 
   cursors = this.input.keyboard.createCursorKeys();
 
@@ -102,11 +99,17 @@ function create() {
       }
     }
   }
+  //add player on tile (0,0) in its center
   player = this.physics.add.image(32 + 16, 32 + 16, "car");
+
+  // prevent player from going out of canvas
   player.setCollideWorldBounds(true);
 
+  //check collision between player and coin
   this.physics.add.overlap(player, coins, collectCoin);
+  //check collision between player and key
   this.physics.add.overlap(player, key, collectKey);
+  //check collision between player and door
   this.physics.add.collider(player, door, win);
 }
 function update() {
@@ -148,43 +151,51 @@ function update() {
     }
   }
 }
+
 function collectCoin(player, coin) {
   // coin physics is disabled and its game object is removed from display
   coin.disableBody(true, true);
+  // add score by 10 and display
   score += 10;
   scoreText.innerHTML = "Score: " + score;
 }
 
 function collectKey(player, key) {
+  // game object is removed from display
   key.disableBody(true, true);
-  have_key = true;
+  have_key = true; // player has collected key
 }
 
 function win(player, door) {
   if (have_key) {
-    game.pause();
+    game.pause(); // pause all game so user cannot continue playing
     level += 1;
-    have_key = false;
+    have_key = false; // reset key
+
     if (level <= 3) {
-      createLevelButton();
+      createNextLevelButtonInWin(); // there is still a next level
     } else {
+      //TODO
       // finished game
     }
   }
 }
 
+// choose grid based on level and display
 function loadLevel(level) {
   if (game) {
     game.destroy(true, false);
   }
+  // LEVELS: any variable game settings between levels are changed here
   grid = grid_array[level];
   game = new Phaser.Game(config);
 }
 
-function createLevelButton() {
-  // winBtn.setAttribute("id", `${levelsArray[level]}`);
+// Win Case: Display a message to go to next level
+function createNextLevelButtonInWin() {
   winBtn.innerHTML = `Level ${level}`;
   winDiv.appendChild(winBtn);
+
   winBtn.addEventListener("click", function () {
     loadLevel(level);
     winDiv.style.display = "none";
@@ -192,3 +203,19 @@ function createLevelButton() {
   });
   winDiv.style.display = "block";
 }
+
+// lose Case: Display a message to go to next level
+function manageTryAgainButtonInLose() {
+  loseBtn.addEventListener("click", function () {
+    // Try again settings
+    loseDiv.style.display = "none";
+    // LOSE reset settings of game
+    loadLevel(level);
+  });
+  game.pause();
+  loseDiv.style.display = "block";
+}
+
+// add timer
+// add a game over and amange reset settings in lose (lose-card in html)
+// add a message when all levels are passed
