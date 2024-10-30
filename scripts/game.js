@@ -36,6 +36,7 @@ function preload() {
     frameHeight: 32,
   });
 }
+
 function create() {
   // create a tilemap where each tile is 32*32 px from map created from csv file
   const map = this.make.tilemap({
@@ -78,6 +79,7 @@ function create() {
 
   this.physics.add.overlap(player, coins, collectCoin, null, this);
 }
+
 function update() {
   // manage cursors to control player
   if (this.input.keyboard.checkDown(cursors.left, 100)) {
@@ -117,6 +119,7 @@ function update() {
     }
   }
 }
+
 function collectCoin(player, coin) {
   // coin physics is disabled and its game object is removed from display
   coin.disableBody(true, true);
