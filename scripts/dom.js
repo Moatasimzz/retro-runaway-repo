@@ -1,9 +1,12 @@
-var scoreText = document.getElementById("score");
-
 /*MAIN MENU*/
 var playBttn = document.getElementById("play-bttn");
 var helpBttn = document.getElementById("help-bttn");
 var userName = document.getElementById("username");
+var carsDiv = document.querySelector(".car-imgs-container");
+var carTitle = document.getElementById("cars-title");
+
+// game.js dom
+var scoreText = document.getElementById("score");
 var winDiv = document.getElementById("win");
 var loseDiv = document.getElementById("lose");
 var levelHeader = document.getElementById("level");

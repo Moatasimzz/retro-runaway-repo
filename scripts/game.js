@@ -18,6 +18,11 @@ const config = {
   },
 };
 
+var carColorToImg = {
+  pink: "./../assets/images/pink-car.png",
+  green: "./../assets/images/green-car.png",
+  yellow: "./../assets/images/yellow-car.png",
+};
 //change grids according to level
 var grid_array = [
   null,
@@ -25,7 +30,8 @@ var grid_array = [
   "./../assets/tilemaps/grid02.csv",
   "./../assets/tilemaps/grid02.csv",
 ];
-
+var urlParams = new URLSearchParams(window.location.search);
+var carColor = urlParams.get("color");
 var grid,
   game,
   player,
@@ -46,8 +52,8 @@ game = new Phaser.Game(config);
 
 function preload() {
   this.load.image("tiles", "./../assets/images/purple-tile.png");
-  this.load.image("car", "./../assets/images/green-car.png");
-  this.load.image("door", "./../assets/images/door.png");
+  this.load.image("car", carColorToImg[carColor]);
+  this.load.image("door", "./../assets/images/door-32px.png");
   this.load.image("key", "./../assets/images/key.png");
   this.load.tilemapCSV("map", grid);
   this.load.spritesheet("coin", "./../assets/images/coin.png", {
