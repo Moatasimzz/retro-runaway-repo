@@ -22,6 +22,10 @@
   justify-content: space-between;
 }
 
+.space-evenly {
+  justify-content: space-evenly;
+}
+
 .full-viewport {
   width: 100vw;
   height: 100vh;
@@ -29,4 +33,38 @@
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-size {
+  height: 100%;
+  width: 100%;
+}
+
+.relative-position {
+  position: relative;
+}
+
+.absolute-position {
+  position: absolute;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.borders {
+  border-radius: 10px;
+  border: 2px solid #650c76;
+  padding: 10px;
+}
+
+.opacity {
+  opacity: 75%;
 }

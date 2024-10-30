@@ -1,4 +1,9 @@
 var scoreText = document.getElementById("score");
+
+/*MAIN MENU*/
+var playBttn = document.getElementById("play-bttn");
+var helpBttn = document.getElementById("help-bttn");
+var userName = document.getElementById("username");
 var winDiv = document.getElementById("win");
 var loseDiv = document.getElementById("lose");
 var levelHeader = document.getElementById("level");
