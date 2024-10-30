@@ -8,6 +8,7 @@ var carTitle = document.getElementById("cars-title");
 
 // game.js dom
 var scoreText = document.getElementById("score");
+var timeText = document.getElementById("time");
 var winDiv = document.getElementById("win");
 var loseDiv = document.getElementById("lose");
 var endDiv = document.getElementById("end");
