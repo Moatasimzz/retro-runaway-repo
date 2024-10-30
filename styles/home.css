@@ -35,7 +35,10 @@
   color: black;
 }
 
-.game-play-description,
+.game-play-description {
+  padding: 85px 50px 85px 0px;
+}
+
 .game-play-title {
   padding: 85px 0px 85px 50px;
 }
