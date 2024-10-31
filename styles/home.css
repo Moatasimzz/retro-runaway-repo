@@ -51,6 +51,80 @@
   font-size: 80px;
   text-shadow: 2px 2px 4px #7e0b95;
 }
+.car-section {
+  background-image: url("./../assets/images/maze-parallax.png");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 120vh;
+}
+.car-section > div {
+  width: 76vw;
+  height: 65vh;
+}
+.car-section > div img,
+.maze-img-left img,
+.maze-img-right img {
+  width: 100%;
+  height: 100%;
+}
+.car-section > div img {
+  rotate: -90deg;
+  object-fit: contain;
+}
+.car-section p {
+  text-transform: uppercase;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 40px;
+  width: 100%;
+  height: 100%;
+}
+.car-cards {
+  width: 100%;
+  padding: 0 71px;
+}
+.car-cards > div {
+  width: 15.5vw;
+  height: 38vh;
+  border-radius: 10px;
+  margin-bottom: 60px;
+}
+.car-cards > div > div {
+  min-width: 100px;
+  min-height: 70px;
+  margin: 82px 52px;
+}
+
+.maze-section {
+  padding: 50px 0px;
+  gap: 20px;
+}
+.maze-section p {
+  text-align: center;
+  font-size: 50px;
+}
+.maze-section > div {
+  gap: 10vh;
+
+  width: 90%;
+}
+
+.maze-img img {
+  object-fit: cover;
+}
+.maze-img-left,
+.maze-img-right {
+  width: 32vw;
+  flex-shrink: 1;
+  min-width: 300px;
+}
+
+.maze-text {
+  width: 30vw;
+}
+
 :root {
   --primary-color: #650c76;
   --secondary-color: #b98eb6;
@@ -243,6 +317,37 @@ footer {
     flex-direction: column;
     text-align: center;
   }
+  .car-section > div {
+    height: 50vh;
+    justify-content: center;
+  }
+
+  .car-section p {
+    font-size: 38px;
+  }
+  .car-cards {
+    width: 100%;
+    padding: 0 50px;
+  }
+  .car-cards > div {
+    width: 15vw;
+    height: 18vh;
+    border-radius: 10px;
+    margin-bottom: 60px;
+  }
+  .car-cards > div > div {
+    min-width: 70px;
+    min-height: 70px;
+    margin: 82px 52px;
+  }
+  .maze1 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .maze2 {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 }
 
 @media (min-width: 561px) and (max-width: 770px) {
@@ -275,6 +380,37 @@ footer {
   .footer-content {
     flex-direction: column;
     text-align: center;
+  }
+  .car-section > div {
+    height: 50vh;
+    justify-content: center;
+  }
+
+  .car-section p {
+    font-size: 38px;
+  }
+  .car-cards {
+    width: 100%;
+    padding: 0 50px;
+  }
+  .car-cards > div {
+    width: 15vw;
+    height: 18vh;
+    border-radius: 10px;
+    margin-bottom: 60px;
+  }
+  .car-cards > div > div {
+    min-width: 70px;
+    min-height: 70px;
+    margin: 82px 52px;
+  }
+  .maze1 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .maze2 {
+    flex-direction: column-reverse;
+    align-items: center;
   }
 }
 
