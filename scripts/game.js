@@ -29,7 +29,7 @@ var grid_array = [
   null,
   "./../assets/tilemaps/grid.csv",
   "./../assets/tilemaps/grid02.csv",
-  "./../assets/tilemaps/grid02.csv",
+  "./../assets/tilemaps/grid03.csv",
 ];
 
 var urlParams = new URLSearchParams(window.location.search);
@@ -47,6 +47,8 @@ var grid,
   coin_value = 3, // The value in your CSV that represents a coin
   key_value = 4, // The value in your CSV that represents a key
   end_value = 5; // The value in your CSV that represents a door
+
+var level = 1; // initial level
 
 //Start at level 1
 grid = grid_array[level];
@@ -184,7 +186,7 @@ function win(player, door) {
     game.pause(); // pause all game so user cannot continue playing
     level += 1;
     have_key = false; // reset key
-    console.log(level);
+
     if (level <= 3) {
       createNextLevelButtonInWin(); // there is still a next level
     } else {
@@ -210,13 +212,13 @@ function createNextLevelButtonInWin() {
   stopTimer();
   winBtn.innerHTML = `Level ${level}`;
   winDiv.appendChild(winBtn);
+  winDiv.style.display = "block";
 
   winBtn.addEventListener("click", function () {
     loadLevel(level);
     winDiv.style.display = "none";
     levelHeader.innerHTML = `Level ${level}`;
   });
-  winDiv.style.display = "block";
 }
 
 // lose Case: Display a message to go to next level
@@ -265,13 +267,10 @@ function updateTime() {
   }
 }
 
+// format time on screen
 function formatTime(num) {
   var min = Math.floor(num / 60);
   var sec = Math.floor(num % 60);
 
   return `${min}:${String(sec).padStart(2, "0")}`;
 }
-
-// add a game over and manage reset settings in lose (lose-card in html)
-// add a message when all levels are passed
-// add grid of level 3
