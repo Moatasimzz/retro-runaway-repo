@@ -31,13 +31,15 @@ canvas {
   border: 20px;
   text-align: center;
 }
+
 .game-settings > div {
   text-align: center;
   padding: 20px;
 }
 
 .win-card > button,
-.lose-card > button {
+.lose-card > button,
+.end-card {
   font-size: 25px;
 }
 
