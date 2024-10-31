@@ -58,16 +58,22 @@
   width: 76vw;
   height: 65vh;
 }
-.car-section > div img {
-  rotate: -90deg;
+.car-section > div img,
+.maze-img-left img,
+.maze-img-right img {
   width: 100%;
   height: 100%;
+}
+.car-section > div img {
+  rotate: -90deg;
 }
 .car-section p {
   text-transform: capitalize;
   padding: 20px 0;
   text-align: center;
   font-size: 40px;
+  width: 100%;
+  height: 100%;
 }
 .car-cards {
   width: 100%;
@@ -83,6 +89,34 @@
   min-width: 100px;
   min-height: 70px;
   margin: 82px 52px;
+}
+
+.maze-section {
+  padding: 50px 0px;
+  gap: 20px;
+}
+.maze-section p {
+  text-align: center;
+  font-size: 50px;
+}
+.maze-section > div {
+  gap: 10vh;
+
+  width: 90%;
+}
+
+.maze-img img {
+  object-fit: cover;
+}
+.maze-img-left,
+.maze-img-right {
+  width: 32vw;
+  flex-shrink: 1;
+  min-width: 300px;
+}
+
+.maze-text {
+  width: 30vw;
 }
 
 :root {
@@ -236,5 +270,15 @@ footer {
   .footer-content {
     flex-direction: column;
     text-align: center;
+  }
+}
+@media (max-width: 920px) {
+  .maze1 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .maze2 {
+    flex-direction: column-reverse;
+    align-items: center;
   }
 }
