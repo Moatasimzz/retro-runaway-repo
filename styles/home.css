@@ -31,12 +31,12 @@
 }
 
 .hero-item > button:hover {
-  background-color: #a00fbd;
-  color: black;
+  background-color: #7e0b95;
 }
 
 .game-play-description {
   padding: 85px 50px 85px 0px;
+  font-size: 24px;
 }
 
 .game-play-title {
@@ -267,42 +267,137 @@ footer {
   margin: auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 560px) {
+  .navbar-container > img {
+    margin-left: 3px;
+    scale: 0.8;
+  }
+
+  .navbar {
+    margin-left: 80px;
+    gap: 12px;
+    font-size: 15px;
+  }
+
+  .hero-section > div > p {
+    font-size: 27px;
+  }
+
+  .hero-section > div > button {
+    font-size: 20px;
+  }
+
+  .gameplay {
+    flex-direction: column;
+  }
+
+  .game-play-title {
+    padding: 20px;
+  }
+
+  .game-play-title p {
+    font-size: 33px;
+  }
+
+  .game-play-description {
+    padding: 10px 25px 20px 25px;
+    font-size: 17px;
+  }
+
+  .vertical-line {
+    display: none;
+  }
+
   .footer-content {
     flex-direction: column;
     text-align: center;
   }
-  .car-section > div {
-    height: 50vh;
-    justify-content: center;
+}
+
+@media (min-width: 561px) and (max-width: 770px) {
+  .navbar-container > img {
+    scale: 0.8;
   }
 
-  .car-section p {
-    font-size: 38px;
+  .navbar {
+    margin-left: 80px;
+    gap: 20px;
+    font-size: 17px;
   }
-  .car-cards {
-    width: 100%;
-    padding: 0 50px;
+
+  .hero-section > div > p {
+    font-size: 31.5px;
   }
-  .car-cards > div {
-    width: 15vw;
-    height: 18vh;
-    border-radius: 10px;
-    margin-bottom: 60px;
+
+  .hero-section > div > button {
+    font-size: 20.5px;
   }
-  .car-cards > div > div {
-    min-width: 70px;
-    min-height: 70px;
-    margin: 82px 52px;
+
+  .game-play-title p {
+    font-size: 31.5px;
+  }
+
+  .game-play-description {
+    font-size: 17px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
   }
 }
-@media (max-width: 920px) {
-  .maze1 {
-    flex-direction: column;
-    align-items: center;
+
+@media (min-width: 770px) and (max-width: 1000px) {
+  .navbar-container > img {
+    scale: 0.8;
   }
-  .maze2 {
-    flex-direction: column-reverse;
-    align-items: center;
+
+  .navbar {
+    margin-left: 90px;
+    gap: 20px;
+    font-size: 24px;
+  }
+
+  .hero-section > div > p {
+    font-size: 43px;
+  }
+
+  .hero-section > div > button {
+    font-size: 27px;
+  }
+
+  .game-play-title p {
+    font-size: 43px;
+  }
+
+  .game-play-description {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1250px) {
+  .navbar-container > img {
+    scale: 0.8;
+  }
+
+  .navbar {
+    gap: 40px;
+    font-size: 28px;
+  }
+
+  .hero-section > div > p {
+    font-size: 52px;
+  }
+
+  .hero-section > div > button {
+    font-size: 27px;
+  }
+
+  .game-play-title p {
+    font-size: 52px;
+  }
+
+  .game-play-description {
+    font-size: 24px;
   }
 }
