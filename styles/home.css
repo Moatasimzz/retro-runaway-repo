@@ -1,5 +1,5 @@
 .navbar-container > img {
-  margin-left: 10px;
+  margin-left: 20px;
   padding: 10px;
 }
 
@@ -7,6 +7,9 @@
   height: 15vh;
   gap: 55px;
   font-size: 28px;
+}
+.navbar > p {
+  text-shadow: 2px 2px 4px #ffffff6e;
 }
 
 .hero-section {
@@ -19,6 +22,7 @@
 
 .hero-section > div > p {
   font-size: 70px;
+  text-shadow: 2px 2px 4px #7e0b95;
 }
 
 .hero-section > div > button {
@@ -45,6 +49,7 @@
 
 .game-play-title p {
   font-size: 80px;
+  text-shadow: 2px 2px 4px #7e0b95;
 }
 :root {
   --primary-color: #650c76;
