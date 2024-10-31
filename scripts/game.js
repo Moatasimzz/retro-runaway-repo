@@ -4,7 +4,7 @@ const config = {
   height: 576,
   parent: "phaser-example",
   pixelArt: true,
-  backgroundColor: "#650c76",
+  backgroundColor: "#222222",
   physics: {
     default: "arcade",
     arcade: {
@@ -55,7 +55,7 @@ grid = grid_array[level];
 game = new Phaser.Game(config);
 
 let timeInterval;
-var time = [0, 20, 100, 85];
+var time = [0, 30, 20, 35];
 startTimer();
 
 function preload() {
@@ -202,6 +202,8 @@ function loadLevel(level) {
     game.destroy(true, false);
   }
   // LEVELS: any variable game settings between levels are changed here
+  score = 0;
+  scoreText.innerHTML = "Score: " + score;
   grid = grid_array[level];
   game = new Phaser.Game(config);
   startTimer();
@@ -226,6 +228,7 @@ function manageTryAgainButtonInLose() {
   game.pause();
   loseDiv.style.display = "block";
 }
+
 loseBtn.addEventListener("click", function () {
   // LOSE reset settings of game
   resetLevel();
@@ -254,6 +257,7 @@ function startTimer() {
 function stopTimer() {
   clearInterval(timeInterval);
 }
+
 // add timer
 function updateTime() {
   if (time[level] > 0) {

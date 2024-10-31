@@ -1,5 +1,5 @@
 .offWhite-color-bg {
-  color: #f3f3f3;
+  background-color: #f3f3f3;
 }
 
 .white-color {
@@ -24,9 +24,19 @@
   color: #f3f3f3;
 }
 .grey-color-bg {
-  color: #f3f3f3;
+  background-color: #f3f3f3;
 }
 
 .black {
   color: rgb(57, 52, 52);
+}
+
+.pink-car {
+  background-color: #f2aecc;
+}
+.yellow-car {
+  background-color: #eee6af;
+}
+.green-car {
+  background-color: #a5f3ec;
 }
