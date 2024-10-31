@@ -55,7 +55,7 @@ grid = grid_array[level];
 game = new Phaser.Game(config);
 
 let timeInterval;
-var time = [0, 30, 20, 35];
+var time = [0, 25, 30, 35];
 startTimer();
 
 function preload() {
