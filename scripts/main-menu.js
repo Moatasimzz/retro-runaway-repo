@@ -30,5 +30,5 @@ function naviagteLVL01() {
 }
 
 function navigateTutorial() {
-  window.location.href = "./../index.html";
+  window.location.href = "./../index.html#tutorials";
 }
