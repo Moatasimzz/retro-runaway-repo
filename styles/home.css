@@ -6,8 +6,9 @@
 .navbar {
   height: 15vh;
   gap: 55px;
-  font-size: 28px;
+  font-size: 33px;
 }
+
 .navbar > p {
   text-shadow: 2px 2px 4px #ffffff58;
 }
@@ -38,13 +39,13 @@
   background-color: #7e0b95;
 }
 
+.game-play-title {
+  padding: 170px 0px 170px 50px;
+}
+
 .game-play-description {
   padding: 85px 50px 85px 0px;
   font-size: 24px;
-}
-
-.game-play-title {
-  padding: 85px 0px 85px 50px;
 }
 
 .game-play-title p {
@@ -79,10 +80,11 @@
   text-transform: uppercase;
   padding: 20px 0;
   text-align: center;
-  font-size: 60px;
+  font-size: 50px;
   width: 100%;
   height: 100%;
 }
+
 .car-cards {
   width: 100%;
   padding: 0 71px;
@@ -106,6 +108,7 @@
 .maze-section p {
   text-align: center;
   font-size: 50px;
+  text-shadow: 2px 2px 4px #7e0b95;
 }
 .maze-section > div {
   gap: 10vh;
@@ -140,9 +143,10 @@
 }
 
 .tutorial h2 {
-  font-size: 2em;
+  font-size: 3em;
   color: var(--primary-color);
   margin-bottom: 1em;
+  text-shadow: 2px 2px 4px #7e0b95;
 }
 
 .tutorial-intro {
@@ -163,7 +167,7 @@
 
 .tutorial-item {
   background-color: #e8f1ff;
-  padding: 1.5em;
+  padding: 3em;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -185,6 +189,7 @@
   color: #333;
   line-height: 1.6;
 }
+
 footer {
   background-color: #333;
   color: #fff;
@@ -299,7 +304,7 @@ footer {
   }
 
   .game-play-title {
-    padding: 20px;
+    padding: 65px 25px 20px 25px;
   }
 
   .game-play-title p {
@@ -307,7 +312,7 @@ footer {
   }
 
   .game-play-description {
-    padding: 10px 25px 20px 25px;
+    padding: 10px 25px 65px 25px;
     font-size: 17px;
   }
 
