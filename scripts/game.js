@@ -23,13 +23,15 @@ var carColorToImg = {
   green: "./../assets/images/green-car.png",
   yellow: "./../assets/images/yellow-car.png",
 };
+
 //change grids according to level
 var grid_array = [
   null,
   "./../assets/tilemaps/grid.csv",
   "./../assets/tilemaps/grid02.csv",
-  "./../assets/tilemaps/grid02.csv",
+  "./../assets/tilemaps/grid03.csv",
 ];
+
 var urlParams = new URLSearchParams(window.location.search);
 var carColor = urlParams.get("color");
 var grid,
@@ -46,9 +48,15 @@ var grid,
   key_value = 4, // The value in your CSV that represents a key
   end_value = 5; // The value in your CSV that represents a door
 
+var level = 1; // initial level
+
 //Start at level 1
 grid = grid_array[level];
 game = new Phaser.Game(config);
+
+let timeInterval;
+var time = [0, 20, 100, 85];
+startTimer();
 
 function preload() {
   this.load.image("tiles", "./../assets/images/purple-tile.png");
@@ -178,11 +186,10 @@ function win(player, door) {
     game.pause(); // pause all game so user cannot continue playing
     level += 1;
     have_key = false; // reset key
-    console.log(level);
+
     if (level <= 3) {
       createNextLevelButtonInWin(); // there is still a next level
     } else {
-      //TODO
       // finished game
       finishAllLevels();
     }
@@ -197,32 +204,33 @@ function loadLevel(level) {
   // LEVELS: any variable game settings between levels are changed here
   grid = grid_array[level];
   game = new Phaser.Game(config);
+  startTimer();
 }
 
 // Win Case: Display a message to go to next level
 function createNextLevelButtonInWin() {
+  stopTimer();
   winBtn.innerHTML = `Level ${level}`;
   winDiv.appendChild(winBtn);
+  winDiv.style.display = "block";
 
   winBtn.addEventListener("click", function () {
     loadLevel(level);
     winDiv.style.display = "none";
     levelHeader.innerHTML = `Level ${level}`;
   });
-  winDiv.style.display = "block";
 }
 
 // lose Case: Display a message to go to next level
 function manageTryAgainButtonInLose() {
-  loseBtn.addEventListener("click", function () {
-    // Try again settings
-    loseDiv.style.display = "none";
-    // LOSE reset settings of game
-    loadLevel(level);
-  });
   game.pause();
   loseDiv.style.display = "block";
 }
+loseBtn.addEventListener("click", function () {
+  // LOSE reset settings of game
+  resetLevel();
+  loseDiv.style.display = "none";
+});
 
 function finishAllLevels() {
   endBtn.addEventListener("click", function () {
@@ -232,7 +240,37 @@ function finishAllLevels() {
   game.pause();
   endDiv.style.display = "block";
 }
+
+function resetLevel() {
+  time = [0, 5, 120, 90];
+  loadLevel(level);
+}
+
+function startTimer() {
+  timeInterval = setInterval(updateTime, 1000);
+  console.log("Timer started");
+}
+
+function stopTimer() {
+  clearInterval(timeInterval);
+}
 // add timer
-// add a game over and manage reset settings in lose (lose-card in html)
-// add a message when all levels are passed
-// add grid of level 3
+function updateTime() {
+  if (time[level] > 0) {
+    console.log(time[level]);
+    time[level] -= 1;
+    timeText.innerText = `Time: ${formatTime(time[level])}`;
+  } else {
+    stopTimer();
+    console.log("lost");
+    manageTryAgainButtonInLose();
+  }
+}
+
+// format time on screen
+function formatTime(num) {
+  var min = Math.floor(num / 60);
+  var sec = Math.floor(num % 60);
+
+  return `${min}:${String(sec).padStart(2, "0")}`;
+}
