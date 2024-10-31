@@ -31,12 +31,12 @@
 }
 
 .hero-item > button:hover {
-  background-color: #a00fbd;
-  color: black;
+  background-color: #7e0b95;
 }
 
 .game-play-description {
   padding: 85px 50px 85px 0px;
+  font-size: 24px;
 }
 
 .game-play-title {
@@ -47,11 +47,10 @@
   font-size: 80px;
 }
 :root {
-  --primary-color: #650C76;
-  --secondary-color: #B98EB6; 
-  --text-color-light: #D3D1E0; 
+  --primary-color: #650c76;
+  --secondary-color: #b98eb6;
+  --text-color-light: #d3d1e0;
 }
-
 
 .tutorial {
   padding: 2em;
@@ -89,7 +88,6 @@
   text-align: center;
 }
 
-
 .tutorial-icon {
   width: 40px;
   height: 40px;
@@ -120,25 +118,30 @@ footer {
   align-items: flex-start;
 }
 
-.footer-credits, .footer-links, .social-media, .footer-info {
+.footer-credits,
+.footer-links,
+.social-media,
+.footer-info {
   flex: 1 1 200px;
   margin: 10px;
 }
 
-.footer-credits h3, .footer-links h3, .social-media h3, .footer-info h3 {
+.footer-credits h3,
+.footer-links h3,
+.social-media h3,
+.footer-info h3 {
   font-size: 1.5em;
   color: white;
   margin-bottom: 0.5em;
   text-decoration: solid;
 }
 
-
 .creators {
   display: flex;
   gap: 10px;
   justify-content: center;
   margin: 10px;
-  }
+}
 
 .creator-link {
   color: var(--secondary-color);
@@ -155,7 +158,6 @@ footer {
   color: #fff;
 }
 
-
 .social-media a {
   margin: 5px;
   display: inline-block;
@@ -165,14 +167,12 @@ footer {
 .social-media img {
   width: 30px;
   height: 30px;
-  
 }
 
 .social-media a:hover img {
   filter: brightness(0.7) invert(1);
   transform: scale(1.1);
 }
-
 
 .footer-links a {
   color: var(--secondary-color);
@@ -186,7 +186,6 @@ footer {
   color: var(--primary-color);
 }
 
-
 .footer-info p {
   color: var(--secondary-color);
   line-height: 1.6;
@@ -194,10 +193,137 @@ footer {
   margin: auto;
 }
 
+@media (max-width: 560px) {
+  .navbar-container > img {
+    margin-left: 3px;
+    scale: 0.8;
+  }
 
-@media (max-width: 768px) {
+  .navbar {
+    margin-left: 80px;
+    gap: 12px;
+    font-size: 15px;
+  }
+
+  .hero-section > div > p {
+    font-size: 27px;
+  }
+
+  .hero-section > div > button {
+    font-size: 20px;
+  }
+
+  .gameplay {
+    flex-direction: column;
+  }
+
+  .game-play-title {
+    padding: 20px;
+  }
+
+  .game-play-title p {
+    font-size: 33px;
+  }
+
+  .game-play-description {
+    padding: 10px 25px 20px 25px;
+    font-size: 17px;
+  }
+
+  .vertical-line {
+    display: none;
+  }
+
   .footer-content {
-      flex-direction: column;
-      text-align: center;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (min-width: 561px) and (max-width: 770px) {
+  .navbar-container > img {
+    scale: 0.8;
+  }
+
+  .navbar {
+    margin-left: 80px;
+    gap: 20px;
+    font-size: 17px;
+  }
+
+  .hero-section > div > p {
+    font-size: 31.5px;
+  }
+
+  .hero-section > div > button {
+    font-size: 20.5px;
+  }
+
+  .game-play-title p {
+    font-size: 31.5px;
+  }
+
+  .game-play-description {
+    font-size: 17px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (min-width: 770px) and (max-width: 1000px) {
+  .navbar-container > img {
+    scale: 0.8;
+  }
+
+  .navbar {
+    margin-left: 90px;
+    gap: 20px;
+    font-size: 24px;
+  }
+
+  .hero-section > div > p {
+    font-size: 43px;
+  }
+
+  .hero-section > div > button {
+    font-size: 27px;
+  }
+
+  .game-play-title p {
+    font-size: 43px;
+  }
+
+  .game-play-description {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1250px) {
+  .navbar-container > img {
+    scale: 0.8;
+  }
+
+  .navbar {
+    gap: 40px;
+    font-size: 28px;
+  }
+
+  .hero-section > div > p {
+    font-size: 52px;
+  }
+
+  .hero-section > div > button {
+    font-size: 27px;
+  }
+
+  .game-play-title p {
+    font-size: 52px;
+  }
+
+  .game-play-description {
+    font-size: 24px;
   }
 }
