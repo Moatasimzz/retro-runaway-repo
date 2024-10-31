@@ -52,7 +52,8 @@ var grid,
 grid = grid_array[level];
 game = new Phaser.Game(config);
 
-var time = [0, 3, 100, 85];
+let timeInterval;
+var time = [0, 20, 100, 85];
 startTimer();
 
 function preload() {
@@ -68,8 +69,6 @@ function preload() {
 }
 
 function create() {
-  gameIsRunning = true;
-
   // create a tilemap where each tile is 32*32 px from map created from csv file
   const map = this.make.tilemap({
     key: "map",
@@ -189,7 +188,6 @@ function win(player, door) {
     if (level <= 3) {
       createNextLevelButtonInWin(); // there is still a next level
     } else {
-      //TODO
       // finished game
       finishAllLevels();
     }
@@ -204,10 +202,12 @@ function loadLevel(level) {
   // LEVELS: any variable game settings between levels are changed here
   grid = grid_array[level];
   game = new Phaser.Game(config);
+  startTimer();
 }
 
 // Win Case: Display a message to go to next level
 function createNextLevelButtonInWin() {
+  stopTimer();
   winBtn.innerHTML = `Level ${level}`;
   winDiv.appendChild(winBtn);
 
@@ -221,15 +221,14 @@ function createNextLevelButtonInWin() {
 
 // lose Case: Display a message to go to next level
 function manageTryAgainButtonInLose() {
-  loseBtn.addEventListener("click", function () {
-    // Try again settings
-    loseDiv.style.display = "none";
-    // LOSE reset settings of game
-    //resetLevel();
-  });
   game.pause();
   loseDiv.style.display = "block";
 }
+loseBtn.addEventListener("click", function () {
+  // LOSE reset settings of game
+  resetLevel();
+  loseDiv.style.display = "none";
+});
 
 function finishAllLevels() {
   endBtn.addEventListener("click", function () {
@@ -241,28 +240,28 @@ function finishAllLevels() {
 }
 
 function resetLevel() {
-  console.log(game);
-  console.log(time);
   time = [0, 5, 120, 90];
-  console.log(time);
-  startTimer();
   loadLevel(level);
 }
 
 function startTimer() {
-  setInterval(updateTime, 1000);
-  //console.log(level);
+  timeInterval = setInterval(updateTime, 1000);
+  console.log("Timer started");
 }
 
+function stopTimer() {
+  clearInterval(timeInterval);
+}
 // add timer
 function updateTime() {
   if (time[level] > 0) {
+    console.log(time[level]);
     time[level] -= 1;
     timeText.innerText = `Time: ${formatTime(time[level])}`;
   } else {
-    time[level] = 0;
+    stopTimer();
+    console.log("lost");
     manageTryAgainButtonInLose();
-    //console.log(level);
   }
 }
 
