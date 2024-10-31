@@ -52,7 +52,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 120vh;
 }
 .car-section > div {
   width: 76vw;
@@ -66,9 +66,10 @@
 }
 .car-section > div img {
   rotate: -90deg;
+  object-fit: contain;
 }
 .car-section p {
-  text-transform: capitalize;
+  text-transform: uppercase;
   padding: 20px 0;
   text-align: center;
   font-size: 40px;
@@ -270,6 +271,29 @@ footer {
   .footer-content {
     flex-direction: column;
     text-align: center;
+  }
+  .car-section > div {
+    height: 50vh;
+    justify-content: center;
+  }
+
+  .car-section p {
+    font-size: 38px;
+  }
+  .car-cards {
+    width: 100%;
+    padding: 0 50px;
+  }
+  .car-cards > div {
+    width: 15vw;
+    height: 18vh;
+    border-radius: 10px;
+    margin-bottom: 60px;
+  }
+  .car-cards > div > div {
+    min-width: 70px;
+    min-height: 70px;
+    margin: 82px 52px;
   }
 }
 @media (max-width: 920px) {

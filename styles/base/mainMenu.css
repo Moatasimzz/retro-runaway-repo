@@ -8,6 +8,11 @@ button:hover {
   border-color: white;
   color: white;
 }
+button:focus {
+  background-color: #372d65;
+  border-color: rgb(123, 91, 210);
+  color: white;
+}
 
 .items {
   width: 100%;
